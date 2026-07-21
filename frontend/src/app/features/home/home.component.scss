@@ -1,0 +1,83 @@
+.header {
+    background-color: #453312;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1{
+    font-size: 3rem;
+    color: #dfa812;
+}
+
+.header .subtitle{
+    color: white;
+    max-width: 40rem;
+    line-height: 1.5rem;
+}
+
+.header .subsubtitle{
+    color: white;
+    font-size: small;
+}
+
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.body .text {
+    max-width: 35rem;
+    color: #a29e9e;
+    line-height: 1.5rem;
+    margin: 0;
+}
+
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+    margin: 2rem;
+    padding: 0;
+}
+
+.cards .card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-style: solid;
+    border-color: #dfa8123a;
+    border-width: 0.1rem;
+    border-radius: 3%;
+}
+
+.cards .title { 
+    font-size: large;
+    font-weight: 900;
+    margin: 0;
+    margin-bottom: 0.4rem;
+}
+
+.cards .text { 
+    font-size: small;
+    color: #a29e9e;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.cards .button {
+    background: linear-gradient(to right, #a77d0b, #eeb30f);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    border-width: 0;
+    border-radius: 8px;
+}

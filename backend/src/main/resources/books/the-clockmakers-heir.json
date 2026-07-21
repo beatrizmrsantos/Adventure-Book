@@ -1,0 +1,58 @@
+{
+  "id": 2,
+  "title": "The Clockmaker's Heir",
+  "author": "Daniel El Fuego",
+  "description": "A new keeper arrives at a remote lighthouse and discovers the tower runs on a strange brass mechanism the previous keeper never finished explaining.",
+  "difficulty": "HARD",
+  "types": ["STEAMPUNK_MYSTERY", "HIGH_FANTASY"],
+  "sections": [
+    {
+      "id": 1,
+      "text": "The ferry drops you at the rocky island. Instead of an ordinary lamp, the lighthouse hums with the sound of turning brass gears.",
+      "type": "BEGIN",
+      "options": [
+        { "description": "Read the previous keeper's logbook", "gotoId": 10 },
+        { "description": "Climb straight to the lamp room", "gotoId": 20 }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "The logbook's final pages describe a second light out at sea that answers the tower's rhythm, and a brass key that can silence it.",
+      "type": "NODE",
+      "options": [
+        { "description": "Go check the lamp room immediately", "gotoId": 30 }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "The spiral stairs groan underfoot. Halfway up, the handrail gives way beneath your grip.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Grab the wall and keep climbing",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 6, "text": "You scrape hard against the stone wall to catch yourself." }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "In the lamp room, the great gear engine grinds and sputters. Out on the water, a second light rises to meet it, keeping perfect time.",
+      "type": "NODE",
+      "options": [
+        { "description": "Turn the brass key to still the mechanism", "gotoId": 40 },
+        { "description": "Leave the mechanism running and signal for help", "gotoId": 50 }
+      ]
+    },
+    {
+      "id": 40,
+      "text": "The gears fall silent. Out on the water, the second light drifts, unanswered, and fades before dawn.",
+      "type": "END"
+    },
+    {
+      "id": 50,
+      "text": "By morning a supply boat arrives, and you leave the island with the logbook tucked under your arm, the brass key still turning.",
+      "type": "END"
+    }
+  ]
+}

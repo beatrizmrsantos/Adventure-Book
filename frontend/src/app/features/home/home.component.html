@@ -1,7 +1,21 @@
-<h1>Adventure Book</h1>
-<ul>
-    <li *ngFor="let book of books">
-        <strong>{{ book.title }}</strong> - {{ book.author }}
-        <p>{{ book.description }}</p>
-    </li>
+<header class="header">
+    <h1>✨ Adventure Awaits ✨</h1>
+    <p class="subtitle">Embark on epic quests where every choice sharpes your destiny. Explore mystical realms, solve ancient mysteries, and become the hero of your own story.</p>
+    <p class="subsubtitle">📖 {{books().length}} Epic Adventures Available 💫</p>
+</header>
+<div class="body">
+    <h2>📚 The Adventure Library</h2>
+    <p class="text">Choose your next adventure from our collection of interactive tales. Each book offers unique paths and multiple endings based on your choices.</p>
+</div>
+<ul class="cards">
+    @for (book of books(); track book.id){
+        <li class="card">
+            <p class="title">{{ book.title }}</p>
+            <p class="text">by {{ book.author }}</p>
+            <p class="text">{{ book.description }}</p>
+            <button class="button">☆ Begin Quest</button>
+        </li>
+    } @empty {
+        <li>Loading books...</li>
+    }
 </ul>

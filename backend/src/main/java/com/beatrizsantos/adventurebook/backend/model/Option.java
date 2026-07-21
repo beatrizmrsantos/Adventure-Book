@@ -1,8 +1,16 @@
 package com.beatrizsantos.adventurebook.backend.model;
 
-public record Option(String description, Long gotoId, Consequence consequence) {
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
-    public Option(String description, Long gotoId) {
-        this(description, gotoId, null);
-    }
-}
+public record Option(
+    @NotNull
+    String description, 
+
+    @NotNull
+    @Positive
+    Long gotoId, 
+
+    @NotNull
+    Consequence consequence
+) {}

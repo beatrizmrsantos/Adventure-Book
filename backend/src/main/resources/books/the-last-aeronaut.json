@@ -1,0 +1,62 @@
+{
+  "id": 3,
+  "title": "The Last Aeronaut",
+  "author": "Marina Blackwood",
+  "description": "A scrappy airship mechanic must keep a failing dirigible aloft long enough to reach safety.",
+  "difficulty": "EASY",
+  "types": ["STEAMPUNK_MYSTERY", "ADVENTURE"],
+  "sections": [
+    {
+      "id": 1,
+      "text": "The airship Meridian groans as a boiler valve blows, venting steam across the deck. Land is still hours away.",
+      "type": "BEGIN",
+      "options": [
+        { "description": "Rush to patch the boiler yourself", "gotoId": 10 },
+        { "description": "Wake the captain first", "gotoId": 20 }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "You climb into the engine room, wrench in hand, steam scalding the air around you.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Tighten the valve by hand",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 3, "text": "The hot metal burns your palms before you get a grip." }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "The captain wakes instantly, tossing you a pair of thick gloves before you head below deck together.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Patch the valve with the captain's help",
+          "gotoId": 30,
+          "consequence": { "type": "GAIN_HEALTH", "value": 2, "text": "With the gloves and an extra pair of hands, the work goes smoothly." }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "The valve holds, but the boiler pressure is still climbing. A safety release lever sits just out of easy reach.",
+      "type": "NODE",
+      "options": [
+        { "description": "Stretch for the lever anyway", "gotoId": 40 },
+        { "description": "Vent pressure through the emergency stack instead", "gotoId": 50 }
+      ]
+    },
+    {
+      "id": 40,
+      "text": "You reach the lever just in time. The pressure drops, and the Meridian limps safely into port.",
+      "type": "END"
+    },
+    {
+      "id": 50,
+      "text": "Steam roars through the emergency stack, and the ship steadies. Cheers erupt on deck as land comes into view.",
+      "type": "END"
+    }
+  ]
+}

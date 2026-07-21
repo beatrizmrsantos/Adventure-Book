@@ -1,0 +1,62 @@
+{
+  "id": 1,
+  "title": "Shadow of the Wyrm",
+  "author": "Rowan Ashgrove",
+  "description": "A young knight sets out to face the wyrm terrorizing the village of Emberfall.",
+  "difficulty": "MEDIUM",
+  "types": ["FANTASY", "ADVENTURE"],
+  "sections": [
+    {
+      "id": 1,
+      "text": "Smoke rises over Emberfall as the wyrm Vaelith circles the hills once more. The village elders look to you for help.",
+      "type": "BEGIN",
+      "options": [
+        { "description": "Head straight for the wyrm's lair", "gotoId": 10 },
+        { "description": "Seek the old sage in the forest first", "gotoId": 20 }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "You climb the scorched hillside toward the lair. The heat grows unbearable as you near the entrance.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Push through the heat into the lair",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 5, "text": "Embers scald your arms as you press forward." }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "The sage listens quietly, then hands you a vial of shimmering liquid. 'Wyrms remember kindness,' she says.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Drink the vial and head to the lair",
+          "gotoId": 30,
+          "consequence": { "type": "GAIN_HEALTH", "value": 4, "text": "Warmth spreads through you, steadying your nerves." }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "Vaelith looms before you, eyes glinting with ancient intelligence. It does not attack, only watches.",
+      "type": "NODE",
+      "options": [
+        { "description": "Draw your sword", "gotoId": 40 },
+        { "description": "Lower your weapon and speak", "gotoId": 50 }
+      ]
+    },
+    {
+      "id": 40,
+      "text": "Steel meets scale in a desperate battle. When the dust settles, Vaelith lies defeated, and Emberfall is safe.",
+      "type": "END"
+    },
+    {
+      "id": 50,
+      "text": "Vaelith tilts its head, then nods slowly. An unlikely peace is struck between wyrm and village.",
+      "type": "END"
+    }
+  ]
+}
