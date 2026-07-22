@@ -7,12 +7,25 @@
     <h2>📚 The Adventure Library</h2>
     <p class="text">Choose your next adventure from our collection of interactive tales. Each book offers unique paths and multiple endings based on your choices.</p>
 </div>
+<div class="search">
+    <span class="icon">🔍</span>
+    <input class="searchText" 
+    type="search" 
+    placeholder="Search adventures..."
+    (input)="onSearch($event)"/>
+</div>
 <ul class="cards">
-    @for (book of books(); track book.id){
+    @for (book of filterBooks(); track book.id){
         <li class="card">
             <p class="title">{{ book.title }}</p>
             <p class="text">by {{ book.author }}</p>
             <p class="text">{{ book.description }}</p>
+            <span class="tagDifficulty" [class] = "book.difficulty.toLowerCase()">{{ book.difficulty | BookTagsPipe}}</span>
+            <div class="tagsType">
+            @for (type of book.types; track type){
+                <span class="tagType">{{ type | BookTagsPipe}}</span>
+            }
+            </div>
             <button class="button">☆ Begin Quest</button>
         </li>
     } @empty {
