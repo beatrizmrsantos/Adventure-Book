@@ -11,13 +11,13 @@
         color: #e6bf6c;
     }
 
-    .subtitle{
+    .subtitle {
         color: white;
         max-width: 40rem;
         line-height: 1.5rem;
     }
 
-    .subsubtitle{
+    .subsubtitle {
         color: white;
         font-size: small;
     }
@@ -31,7 +31,7 @@
     text-align: center;
     padding: 1.5rem;
 
-    .text{
+    .text {
         max-width: 35rem;
         color: #978b83;
         line-height: 1.5rem;
@@ -39,7 +39,7 @@
     }
 }
 
-.search {
+.filter {
     position: relative;
     width: 60%;
     margin: 1rem auto;
@@ -47,14 +47,14 @@
 
     .icon {
         position: absolute;
-        left: 0.8rem;
+        left: 0.7rem;
         top: 50%;
         transform: translateY(-50%);
     }
-    
-    .searchText {
+
+    .search {
         width: 100%;
-        padding-left: 2rem;
+        padding-left: 2.5rem;
         padding-bottom: 0.5rem;
         padding-top: 0.5rem;
         padding-right: 0.5rem;
@@ -69,15 +69,106 @@
     }
 }
 
+.filterTags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+
+    .icon{
+        color: #978b83
+    }
+
+    .text {
+        color: #978b83;
+        margin-left: 0.3rem;
+        margin-top: 0.2rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-direction: column;
+
+        .tagsType {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-left: 1rem;
+
+            .tagType {
+                display: inline-block;
+                padding: 0.05rem 0.8rem;
+                border-radius: 20px;
+                border-width: 0.1rem;
+                border-style: solid;
+                text-align: center;
+                font-size: small;
+                background-color: #f2ebe2;
+                border-color: #f0e4c3;
+                font-weight: 600;
+
+                &.selectedTag{
+                    border-width: 0.2rem;
+                    box-shadow: 0 0 0 2px;
+                }
+            }
+        }
+
+        .tagsDifficulty {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+
+            .tagDifficulty {
+                display: inline-block;
+                padding: 0.05rem 0.3rem;
+                border-radius: 20px;
+                border-width: 0.1rem;
+                border-style: solid;
+                text-align: center;
+                font-size: small;
+                font-weight: 600;
+
+                &.easy {
+                    background-color: #e3fbe7;
+                    color: #31643a;
+                    border-color: #bdf0c8;
+                }
+
+                &.medium {
+                    background-color: #fcf3cc;
+                    color: #a36e44;
+                    border-color: #f6e091;
+                }
+
+                &.hard {
+                    background-color: #fae2e1;
+                    color: #8f2b26;
+                    border-color: #f2c1bf;
+                }
+
+                &.selectedDifficulty {
+                    border-width: 0.2rem;
+                    box-shadow: 0 0 0 2px;
+                }
+            }
+        }
+    }
+
+}
+
 
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 15rem);
+    grid-template-columns: repeat(auto-fit, 18rem);
     justify-content: center;
     gap: 1.5rem;
     margin: 2rem;
     padding: 0;
+    min-height: 20rem;
 
     .card {
         display: flex;
@@ -89,14 +180,14 @@
         border-radius: 3%;
     }
 
-    .title { 
+    .title {
         font-size: large;
         font-weight: 900;
         margin: 0;
         margin-bottom: 0.4rem;
     }
 
-    .text { 
+    .text {
         font-size: small;
         color: #978b83;
         margin: 0;
@@ -112,13 +203,13 @@
         border-radius: 8px;
     }
 
-    .tagDifficulty{
+    .tagDifficulty {
+        align-self: flex-start;
         display: inline-block;
         padding: 0.05rem 0.3rem;
         border-radius: 20px;
         border-width: 0.1rem;
         border-style: solid;
-        width: 20%;
         text-align: center;
         font-size: small;
         font-weight: 600;
@@ -162,8 +253,11 @@
             border-color: #f0e4c3;
             font-weight: 600;
         }
-            
     }
 
+    .message {
+        color: #978b83;
+        text-align: center;
+    }
 
 }

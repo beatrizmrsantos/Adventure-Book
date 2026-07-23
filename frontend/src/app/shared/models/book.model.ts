@@ -11,8 +11,15 @@ export interface Book {
 
 export type BookDifficulty = "EASY" | "MEDIUM" | "HARD";
 
+export const BOOK_DIFFICULTY : BookDifficulty[] = [
+    "EASY", "MEDIUM", "HARD"
+]
+
 export type BookType = "FANTASY" | "ADVENTURE" | "HIGH_FANTASY" | "STEAMPUNK_MYSTERY";
 
+export const BOOK_TYPES : BookType[] = [
+    "FANTASY", "ADVENTURE", "HIGH_FANTASY", "STEAMPUNK_MYSTERY"
+];
 
 
 export interface Section {
