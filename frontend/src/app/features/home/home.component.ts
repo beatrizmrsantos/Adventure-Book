@@ -4,11 +4,12 @@ import { Book, BOOK_DIFFICULTY, BOOK_TYPES, BookDifficulty, BookType } from '../
 import { BookService } from '../../core/services/book.service';
 import { BookTagsPipe } from '../../shared/pipes/book-tags.pipe';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BookTagsPipe, MatIconModule],
+  imports: [BookTagsPipe, MatIconModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -20,10 +21,10 @@ export class HomeComponent implements OnInit{
     tags = BOOK_TYPES;
     difficulties = BOOK_DIFFICULTY;
 
-    constructor(private booService: BookService){}
+    constructor(private bookService: BookService){}
 
     ngOnInit(): void {
-      this.booService.getBooks().subscribe((books)=>(this.books.set(books)));
+      this.bookService.getBooks().subscribe((books)=>(this.books.set(books)));
     }
 
     filterBooks = computed(() => {

@@ -1,0 +1,33 @@
+<header class="header">
+    <button class="back" [routerLink]="['']">
+        <mat-icon>arrow_back</mat-icon>
+        Back to Library
+    </button>
+    <div class="book">
+        <mat-icon class="icon">book</mat-icon>
+        <span class="title">{{book()?.title}}</span>
+    </div>
+    <button class="save">
+        <mat-icon>save</mat-icon>
+        Save Progress
+    </button>
+</header>
+<div class="body">
+    <h1>{{book()?.title}}</h1>
+    <p class="text">{{section()?.text}}</p>
+    <hr class="divider" />
+    <div class="choose">
+        <h3>What do you choose?</h3>
+        <ol class="options">
+            @for (option of section()?.options ?? []; track $index){
+                <button class="option">
+                    <span class="number">{{ $index + 1 }}</span>
+                    {{option.description}}
+                </button>
+            } @empty {
+                <span class="message">No Options Available...</span>
+            }
+        </ol>
+    </div>
+
+</div>

@@ -44,7 +44,7 @@
                 <span class="tagType">{{ type | BookTagsPipe}}</span>
             }
             </div>
-            <button class="button">☆ Begin Quest</button>
+            <button class="button" [routerLink]="['/game', book.id]">☆ Begin Quest</button>
         </li>
     } @empty {
         <p class="message">No books for the selected filter...</p>
