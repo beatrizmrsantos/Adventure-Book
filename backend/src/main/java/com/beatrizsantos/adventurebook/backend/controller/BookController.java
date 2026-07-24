@@ -2,6 +2,7 @@ package com.beatrizsantos.adventurebook.backend.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getBooks(){
-        return bookService.getAllBooks();
+    public ResponseEntity<List<Book>> getBooks(){
+        return ResponseEntity.ok().body(bookService.getAllBooks());
     }
     
 }

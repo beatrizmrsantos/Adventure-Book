@@ -7,27 +7,46 @@
         <mat-icon class="icon">book</mat-icon>
         <span class="title">{{book()?.title}}</span>
     </div>
-    <button class="save">
+    <button class="save" (click)="saveGame()">
         <mat-icon>save</mat-icon>
         Save Progress
     </button>
+    @if(message()){
+    <span class="message" [class]="messageStatus()">
+        @if(messageStatus() === 'error'){
+        <mat-icon class="icon">error</mat-icon>
+        } @else {
+        <mat-icon class="icon">check_circle</mat-icon>
+        }
+        {{ message() }}
+        <button class="x" (click)="closeMesssage()"><mat-icon>close</mat-icon></button>
+    </span>
+    }
 </header>
+
 <div class="body">
     <h1>{{book()?.title}}</h1>
     <p class="text">{{section()?.text}}</p>
     <hr class="divider" />
-    <div class="choose">
-        <h3>What do you choose?</h3>
-        <ol class="options">
-            @for (option of section()?.options ?? []; track $index){
-                <button class="option">
-                    <span class="number">{{ $index + 1 }}</span>
-                    {{option.description}}
-                </button>
-            } @empty {
-                <span class="message">No Options Available...</span>
-            }
-        </ol>
-    </div>
-
+    @if(loseGame()){
+        <span class="message">💀 Your journey ends here... your life ended.</span>
+    } @else {
+        @if(endGame()){
+            <span class="message">Congratulations! You finished the game! 🎉</span>
+        } @else {
+            <div class="choose">
+                @if(section()?.options !== null){
+                <h3>What do you choose?</h3>
+                }
+                <ol class="options">
+                    @for (option of section()?.options ?? []; track $index){
+                    <button class="option" (click)="chooseOption(option)">
+                        <span class="number">{{ $index + 1 }}</span>
+                        {{option.description}}
+                    </button>
+                    }
+                </ol>
+            </div>
+        }
+    }
 </div>
