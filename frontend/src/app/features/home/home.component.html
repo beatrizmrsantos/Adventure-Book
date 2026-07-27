@@ -3,50 +3,52 @@
     <p class="subtitle">Embark on epic quests where every choice sharpes your destiny. Explore mystical realms, solve ancient mysteries, and become the hero of your own story.</p>
     <p class="subsubtitle">📖 {{books().length}} Epic Adventures Available 💫</p>
 </header>
-<div class="body">
-    <h2>📚 The Adventure Library</h2>
-    <p class="text">Choose your next adventure from our collection of interactive tales. Each book offers unique paths and multiple endings based on your choices.</p>
-</div>
-<div>
-    <div class="filter">
-        <mat-icon class="icon">search</mat-icon>
-        <input class="search" 
-        type="search" 
-        placeholder="Search adventures..."
-        (input)="onSearch($event)"/>
+<main>
+    <div class="body">
+        <h2>📚 The Adventure Library</h2>
+        <p class="text">Choose your next adventure from our collection of interactive tales. Each book offers unique paths and multiple endings based on your choices.</p>
     </div>
-    <div class="filterTags">
-        <mat-icon class="icon">filter_alt</mat-icon>
-        <span class="text">Filters:</span>
-        <div class="tags">
-            <div class="tagsType">
-                @for (tag of tags; track tag){
-                    <button (click)="chooseType(tag)" class="tagType" [class.selectedTag]="selectedTags()?.includes(tag)">{{tag | BookTagsPipe}}</button>
-                }
-            </div>
-            <div class="tagsDifficulty">
-                @for (difficulty of difficulties; track difficulty){
-                    <button (click)="chooseDifficulty(difficulty)" class="tagDifficulty" [class] = "difficulty.toLowerCase()" [class.selectedDifficulty]="selectedDifficulty() === difficulty">{{ difficulty | BookTagsPipe}}</button>
-                }
+    <div>
+        <div class="filter">
+            <mat-icon class="icon">search</mat-icon>
+            <input class="search" 
+            type="search" 
+            placeholder="Search adventures..."
+            (input)="onSearch($event)"/>
+        </div>
+        <div class="filterTags">
+            <mat-icon class="icon">filter_alt</mat-icon>
+            <span class="text">Filters:</span>
+            <div class="tags">
+                <div class="tagsType">
+                    @for (tag of tags; track tag){
+                        <button (click)="chooseType(tag)" class="tagType" [class.selectedTag]="selectedTags()?.includes(tag)">{{tag | BookTagsPipe}}</button>
+                    }
+                </div>
+                <div class="tagsDifficulty">
+                    @for (difficulty of difficulties; track difficulty){
+                        <button (click)="chooseDifficulty(difficulty)" class="tagDifficulty" [class] = "difficulty.toLowerCase()" [class.selectedDifficulty]="selectedDifficulty() === difficulty">{{ difficulty | BookTagsPipe}}</button>
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
-<ul class="cards">
-    @for (book of filterBooks(); track book.id){
-        <li class="card">
-            <p class="title">{{ book.title }}</p>
-            <p class="text">by {{ book.author }}</p>
-            <p class="text">{{ book.description }}</p>
-            <span class="tagDifficulty" [class] = "book.difficulty.toLowerCase()">{{ book.difficulty | BookTagsPipe}}</span>
-            <div class="tagsType">
-            @for (type of book.types; track type){
-                <span class="tagType">{{ type | BookTagsPipe}}</span>
-            }
-            </div>
-            <button class="button" [routerLink]="['/game', book.id]">☆ Begin Quest</button>
-        </li>
-    } @empty {
-        <p class="message">No books for the selected filter...</p>
-    }
-</ul>
+    <ul class="cards">
+        @for (book of filterBooks(); track book.id){
+            <li class="card">
+                <p class="title">{{ book.title }}</p>
+                <p class="text">by {{ book.author }}</p>
+                <p class="text">{{ book.description }}</p>
+                <span class="tagDifficulty" [class] = "book.difficulty.toLowerCase()">{{ book.difficulty | BookTagsPipe}}</span>
+                <div class="tagsType">
+                @for (type of book.types; track type){
+                    <span class="tagType">{{ type | BookTagsPipe}}</span>
+                }
+                </div>
+                <button class="button" [routerLink]="['/game', book.id]">☆ Begin Quest</button>
+            </li>
+        } @empty {
+            <p class="message">No books for the selected filter...</p>
+        }
+    </ul>
+</main>

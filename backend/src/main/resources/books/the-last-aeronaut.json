@@ -24,6 +24,11 @@
           "description": "Tighten the valve by hand",
           "gotoId": 30,
           "consequence": { "type": "LOSE_HEALTH", "value": 3, "text": "The hot metal burns your palms before you get a grip." }
+        },
+        {
+          "description": "Use the wrench instead of your bare hands",
+          "gotoId": 30,
+          "consequence": { "type": "GAIN_HEALTH", "value": 1, "text": "The wrench keeps your hands clear of the worst of the heat." }
         }
       ]
     },
@@ -36,6 +41,11 @@
           "description": "Patch the valve with the captain's help",
           "gotoId": 30,
           "consequence": { "type": "GAIN_HEALTH", "value": 2, "text": "With the gloves and an extra pair of hands, the work goes smoothly." }
+        },
+        {
+          "description": "Send the captain to steady the helm and handle it alone",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 2, "text": "Working alone, the steam catches you off guard more than once." }
         }
       ]
     },
@@ -44,8 +54,16 @@
       "text": "The valve holds, but the boiler pressure is still climbing. A safety release lever sits just out of easy reach.",
       "type": "NODE",
       "options": [
-        { "description": "Stretch for the lever anyway", "gotoId": 40 },
-        { "description": "Vent pressure through the emergency stack instead", "gotoId": 50 }
+        {
+          "description": "Stretch for the lever anyway",
+          "gotoId": 40,
+          "consequence": { "type": "LOSE_HEALTH", "value": 3, "text": "You strain hard to reach it, and something in your shoulder protests." }
+        },
+        {
+          "description": "Vent pressure through the emergency stack instead",
+          "gotoId": 50,
+          "consequence": { "type": "GAIN_HEALTH", "value": 1, "text": "The safer option costs you nothing but a little time." }
+        }
       ]
     },
     {

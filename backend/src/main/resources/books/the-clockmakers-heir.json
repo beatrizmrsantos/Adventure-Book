@@ -20,7 +20,16 @@
       "text": "The logbook's final pages describe a second light out at sea that answers the tower's rhythm, and a brass key that can silence it.",
       "type": "NODE",
       "options": [
-        { "description": "Go check the lamp room immediately", "gotoId": 30 }
+        {
+          "description": "Go check the lamp room immediately",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 2, "text": "You rush up the stairs too fast and wrench your ankle on a loose step." }
+        },
+        {
+          "description": "Search the room for tools before heading up",
+          "gotoId": 30,
+          "consequence": { "type": "GAIN_HEALTH", "value": 2, "text": "You find a sturdy lantern and a spare coat, and feel steadier for it." }
+        }
       ]
     },
     {
@@ -32,6 +41,11 @@
           "description": "Grab the wall and keep climbing",
           "gotoId": 30,
           "consequence": { "type": "LOSE_HEALTH", "value": 6, "text": "You scrape hard against the stone wall to catch yourself." }
+        },
+        {
+          "description": "Climb back down and take the stairs more carefully",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 2, "text": "You lose a little time, and skin your knee on the way back up." }
         }
       ]
     },
@@ -40,8 +54,16 @@
       "text": "In the lamp room, the great gear engine grinds and sputters. Out on the water, a second light rises to meet it, keeping perfect time.",
       "type": "NODE",
       "options": [
-        { "description": "Turn the brass key to still the mechanism", "gotoId": 40 },
-        { "description": "Leave the mechanism running and signal for help", "gotoId": 50 }
+        {
+          "description": "Turn the brass key to still the mechanism",
+          "gotoId": 40,
+          "consequence": { "type": "LOSE_HEALTH", "value": 3, "text": "The key resists, and a stray gear tooth bites into your palm." }
+        },
+        {
+          "description": "Leave the mechanism running and signal for help",
+          "gotoId": 50,
+          "consequence": { "type": "GAIN_HEALTH", "value": 2, "text": "Stepping back from the noise, you catch your breath at last." }
+        }
       ]
     },
     {

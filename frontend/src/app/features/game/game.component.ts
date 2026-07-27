@@ -1,5 +1,5 @@
 import { Component, computed, OnInit, signal } from '@angular/core';
-import { Book, Section, Option } from '../../shared/models/book.model';
+import { Book, ConsequenceType, Option } from '../../shared/models/book.model';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BookService } from '../../core/services/book.service';
@@ -67,7 +67,22 @@ export class GameComponent implements OnInit{
     }
 
     chooseOption(option: Option): void {
-        this.game.update(current => current ? {...current, currentSectionId: option.gotoId } : null);
+        let pointsRes = this.game()?.points ?? 0; 
+        if(option.consequence?.type === "LOSE_HEALTH"){
+            pointsRes = pointsRes - option.consequence?.value;
+        }
+        if(option.consequence?.type === "GAIN_HEALTH"){
+            pointsRes = pointsRes + option.consequence?.value;
+        } 
+
+        this.game.update(current => current ? {...current, points: pointsRes, currentSectionId: option.gotoId } : null);
+    }
+
+    startOver() : void {
+        let section = this.book()?.sections.find(s => s.type === "BEGIN");
+        if(section){
+            this.game.update(current => current ? {...current, points: 10, currentSectionId: section.id} : null); 
+        }
     }
 
     saveGame(): void {

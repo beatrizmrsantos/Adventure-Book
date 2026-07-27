@@ -7,10 +7,18 @@
         <mat-icon class="icon">book</mat-icon>
         <span class="title">{{book()?.title}}</span>
     </div>
-    <button class="save" (click)="saveGame()">
-        <mat-icon>save</mat-icon>
-        Save Progress
-    </button>
+    <div class="actions">
+        <button class="save" (click)="saveGame()">
+            <mat-icon>save</mat-icon>
+            Save Progress
+        </button>
+        @if(loseGame() || endGame()){
+            <button class="startOver" (click)="startOver()">
+                <mat-icon>repeat</mat-icon>
+                Start Over
+            </button>
+        }
+    </div>
     @if(message()){
     <span class="message" [class]="messageStatus()">
         @if(messageStatus() === 'error'){
@@ -24,7 +32,7 @@
     }
 </header>
 
-<div class="body">
+<main class="body">
     <h1>{{book()?.title}}</h1>
     <p class="text">{{section()?.text}}</p>
     <hr class="divider" />
@@ -43,10 +51,14 @@
                     <button class="option" (click)="chooseOption(option)">
                         <span class="number">{{ $index + 1 }}</span>
                         {{option.description}}
+                        @if (option.consequence){
+                            <p class="consequence">{{option.consequence?.text}}</p>
+                        }
                     </button>
                     }
                 </ol>
             </div>
         }
     }
-</div>
+    <span class="points" [class.lose]="loseGame()">Health Points: {{game()?.points}}</span>
+</main>

@@ -23,7 +23,12 @@
         {
           "description": "Push through the heat into the lair",
           "gotoId": 30,
-          "consequence": { "type": "LOSE_HEALTH", "value": 5, "text": "Embers scald your arms as you press forward." }
+          "consequence": { "type": "LOSE_HEALTH", "value": 12, "text": "Embers engulf you as you press forward, searing your armor and scorching your skin." }
+        },
+        {
+          "description": "Search for a cooler path around the flames",
+          "gotoId": 30,
+          "consequence": { "type": "LOSE_HEALTH", "value": 3, "text": "The detour costs you time, and a stray ember still catches your sleeve." }
         }
       ]
     },
@@ -36,6 +41,10 @@
           "description": "Drink the vial and head to the lair",
           "gotoId": 30,
           "consequence": { "type": "GAIN_HEALTH", "value": 4, "text": "Warmth spreads through you, steadying your nerves." }
+        },
+        {
+          "description": "Save the vial for later and head to the lair",
+          "gotoId": 30
         }
       ]
     },
@@ -44,8 +53,16 @@
       "text": "Vaelith looms before you, eyes glinting with ancient intelligence. It does not attack, only watches.",
       "type": "NODE",
       "options": [
-        { "description": "Draw your sword", "gotoId": 40 },
-        { "description": "Lower your weapon and speak", "gotoId": 50 }
+        {
+          "description": "Draw your sword",
+          "gotoId": 40,
+          "consequence": { "type": "LOSE_HEALTH", "value": 2, "text": "The wyrm's tail clips your shoulder as the battle begins." }
+        },
+        {
+          "description": "Lower your weapon and speak",
+          "gotoId": 50,
+          "consequence": { "type": "GAIN_HEALTH", "value": 2, "text": "Vaelith's gaze softens, and the tension in your chest eases." }
+        }
       ]
     },
     {
