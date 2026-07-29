@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.beatrizsantos.adventurebook.backend.model.Book;
 import com.beatrizsantos.adventurebook.backend.model.GameSession;
+import com.beatrizsantos.adventurebook.backend.model.GameSessionDTO;
 import com.beatrizsantos.adventurebook.backend.service.BookService;
 import com.beatrizsantos.adventurebook.backend.service.GameSessionService;
+import com.beatrizsantos.mapper.GameSessionMapper;
+
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -52,7 +56,7 @@ public class GameSessionController {
             return ResponseEntity.badRequest().body("Book does not have a beggining.");
         }
 
-        return ResponseEntity.ok(game);
+        return ResponseEntity.ok(GameSessionMapper.toDTO(game));
     }
 
     @GetMapping("/{bookId}")
@@ -66,22 +70,21 @@ public class GameSessionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doesn't exist a game for this book.");
         }
 
-        return ResponseEntity.ok(game);
+        return ResponseEntity.ok(GameSessionMapper.toDTO(game));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateGame(@PathVariable Long id, @RequestBody GameSession body){
+    public ResponseEntity<?> updateGame(@PathVariable Long id, @Valid @RequestBody GameSessionDTO body){
         if (id <= 0) {
             return ResponseEntity.badRequest().body("ID must be greater than 0.");
         }
 
-        GameSession game = gameSessionService.updateGame(id, body);
+        GameSession game = gameSessionService.updateGame(id, GameSessionMapper.toEntity(body));
         if(game == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Doesn't exist a game for this ID.");
         }
 
-        return ResponseEntity.ok(game);
+        return ResponseEntity.ok(GameSessionMapper.toDTO(game));
     }
-
     
 }

@@ -1,29 +1,29 @@
 package com.beatrizsantos.adventurebook.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameSession {
+public class GameSessionDTO {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Positive
     private Long id;
 
-    
+    @NotNull
+    @Positive
     private Long bookId;
 
-    
+    @NotNull
+    @Positive
     private Long currentSectionId;
 
-    
+    @NotNull
     private int points;
 }
